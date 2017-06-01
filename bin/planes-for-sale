@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require './lib/planes_for_sale'
+
+PlanesForSale::CLI.new.call
+
