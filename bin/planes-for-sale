@@ -2,5 +2,8 @@
 
 require './lib/planes_for_sale'
 
+require "bundler/setup"
+require "planes_for_sale"
+
 PlanesForSale::CLI.new.call
 
