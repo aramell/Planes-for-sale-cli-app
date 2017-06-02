@@ -6,12 +6,12 @@ require 'planes_for_sale/version'
 Gem::Specification.new do |spec|
   spec.name          = "planes_for_sale"
   spec.version       = PlanesForSale::VERSION
-  spec.authors       = ["TODO: Write your name"]
-  spec.email         = ["<github email address>"]
+  spec.authors       = ["Andrew Ramell"]
+  spec.email         = ["<andrew.ramell@gmail.com>"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{}
+  spec.description   = %q{}
+  spec.homepage      = ""
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
