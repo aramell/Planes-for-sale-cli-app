@@ -8,7 +8,8 @@ class PlanesForSale::Scraper
 
       Planesforsale_url = 'https://www.controller.com/listings/aircraft/for-sale/list/category/13/aircraft/manufacturer/cessna/model-group/182'
       plane_url = "https://www.controller.com/listings/aircraft/for-sale/*"
-      @@all = []
+      
+      @planes = []
 
 
       def self.get_page
@@ -19,7 +20,6 @@ class PlanesForSale::Scraper
       def self.scrape_plane_index
             self.get_page.css(".border-bottom")
 
-            binding.pry
       end
 
 
@@ -34,15 +34,23 @@ class PlanesForSale::Scraper
                        plane_listing.plane_desc = airplane.css('.equip-details .m-bottom-5').text
                         plane_listing.dealer_info = airplane.css('.dealer-info .bold').text
                         plane_listing.dealer_phone = airplane.css('.call-it-listing a').text
-                        planes << plane_listing
+                        @planes << plane_listing
                         # total_time = airplane.css()
                         # avionics = airplane.css('page.text.match('total')')          
          
                       
                   end
             end
-            planes
+            @planes
       end
+
+      # def create_planes
+      #       scrape_plane_index.each do |plane|
+      #             create_from_index(plane)
+
+      #       end
+
+      # end
 
       def self.plane_listings
 

@@ -1,6 +1,6 @@
 
 class PlanesForSale::Plane
-    attr_accessor :name, :price, :location, :url, :total_time, :dealer
+    attr_accessor :name, :price, :location, :url, :total_time, :dealer, :planes
 
     @@all = []
 
@@ -18,7 +18,7 @@ class PlanesForSale::Plane
         @@all << new_plane
    end
 
-   def initialize(name=nil, url= nil, location = nil, dealer = nil)
+   def initialize(name = nil, url= nil, location = nil, dealer = nil)
 
         @name = name
         @url = url
@@ -29,12 +29,12 @@ class PlanesForSale::Plane
 
     def self.all
         @@all
-
     end
+
     
-    def create_from_index(irplane)
+    def self.create_from_index
     
-        airplane.each do |p|
+        PlanesForSale::Scraper.scrape_plane_page.each do |p|
             self.new(p)
             binding.pry
         end
