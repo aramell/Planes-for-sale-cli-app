@@ -18,13 +18,10 @@ class PlanesForSale::Scraper
                         plane_desc = airplane.css('.equip-details .m-bottom-5').text
                         dealer_info = airplane.css('.dealer-info .bold').text
                         dealer_phone = airplane.css('.call-it-listing a').text
-                        total_time = airplane.css()
-                        avionics = airplane.css('page.text.match('total')')
 
-
-                        
-           
-            binding.pry
+                        # total_time = airplane.css()
+                        # avionics = airplane.css('page.text.match('total')')          
+         
                       
                   end
             end

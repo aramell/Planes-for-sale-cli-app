@@ -1,5 +1,6 @@
 require_relative "planes_for_sale/version"
 
+require "bundler/setup"
 
 require 'nokogiri'
 require 'pry'

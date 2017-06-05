@@ -1,6 +1,6 @@
 class PlanesForSale::CLI
 
-
+    attr_accessor :name, :price, :total_time,
 
     def call
 
@@ -13,9 +13,12 @@ class PlanesForSale::CLI
     def list_planes
 
         puts "Here are the planes:"
-        # @planes.each.with_index(1) do |plane, i|
-        # puts "#{i}. #{plane}"
-        # end
+            #list the planes showing
+        planes = PlanesForSale::Plane.airplane
+                
+        planes.each.with_index(1) do |plane, i|
+        puts "#{i}. #{name} - #{total_time} - #{price}"
+        end
     end
 
 
@@ -24,18 +27,18 @@ class PlanesForSale::CLI
          while input != "exit"
           puts "Enter the number for the plane you would like more info on or type list to see planes or type exit:"
              input = gets.strip.downcase
-             if input.to_i? > 0
-                 puts @deals[input.to_i-1]
-                case input
-                    when "1"
-                        puts "more info on plane 1..."
-                    when "2"
-                        puts "more info on plane 2..."
-                    when "list"
-                        list_planes
-                    when "exit"
+            
+                if input.to_i > 0
+                    binding.pry
+                     puts planes[input.to_i-1]
+                elsif  input == "list"
+                    list_planes
+                elsif "exit"
                         goodbye
-                 end
+                elsif
+                     puts "not sure what you mean... type a plane number, list or exit"
+                    
+
             end
         end
     end
