@@ -32,20 +32,23 @@ class PlanesForSale::CLI
              input = gets.strip.downcase
            
             airplane = PlanesForSale::Plane.airplane_selection(input.to_i)
-                # if input.to_i >0
-                #     input.to_i-1 
+                if input.to_i >0
                  display_plane(airplane)
+                 puts ""
+                 puts "Enter more if you would like more details on this plane; otherwise input list to see more planes or exit to leave program"
                      
-                # elsif  input == "list"
-                #     list_planes
-                # # elsif "exit"
-                #         # goodbye
-                # elsif
-                #      puts "not sure what you mean... type a plane number, list or exit"
+                elsif  input == "list"
+                  list_planes
+               
+               elsif input == "more"
+                   more_detail(airplane)
+
+                 elsif
+                 puts "not sure what you mean... type a plane number, list or exit"
                     
                  
 
-            
+            end
         end
     end
 
@@ -64,9 +67,24 @@ class PlanesForSale::CLI
         puts "________________________"
     end
 
-    def goodbye
+    def more_detail(airplane)
+            puts "Aircraft year/type: #{airplane.name}"
+            puts ""
+            puts "Location:" + "#{airplane.location}"
+            puts "Seller: #{airplane.dealer}"
+            puts ""
+            puts "#{airplane.price}"
+            puts " "
+            puts "#{airplane.description}"
+            puts "#{airplane.url}"
 
+
+    end
+    def goodbye
+        puts ""
         puts "goodbye!"
+        puts ""
+        puts ""
 
     end
 
