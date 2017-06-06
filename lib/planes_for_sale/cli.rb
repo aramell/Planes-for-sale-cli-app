@@ -30,31 +30,38 @@ class PlanesForSale::CLI
          while input != "exit"
           puts "Enter the number for the plane you would like more info on or type list to see planes or type exit:"
              input = gets.strip.downcase
-            
-                if input.to_i >0
-                    puts @planes[input.to_i-1]
-                elsif  input == "list"
-                    list_planes
-                # elsif "exit"
-                        # goodbye
+           
+            airplane = PlanesForSale::Plane.airplane_selection(input.to_i)
+                # if input.to_i >0
+                #     input.to_i-1 
+                 display_plane(airplane)
+                     
+                # elsif  input == "list"
+                #     list_planes
+                # # elsif "exit"
+                #         # goodbye
                 # elsif
                 #      puts "not sure what you mean... type a plane number, list or exit"
                     
                  
 
-            end
+            
         end
     end
 
-    def display_planes
-        
 
-        PlanesForSale::Plane.each do |plane|
-            puts "#{plane.name}"
-            puts "#{plane.location}"
-            puts "#{plane.dealer}"
-            
-        end
+    def display_plane(airplane)
+        
+        puts "________________________"
+        PlanesForSale::Plane.all
+            puts "Aircraft year/type: #{airplane.name}"
+            puts ""
+            puts "Location:" + "#{airplane.location}"
+            puts "Seller: #{airplane.dealer}"
+            puts ""
+            puts "#{airplane.price}"
+        puts ""
+        puts "________________________"
     end
 
     def goodbye

@@ -20,11 +20,14 @@ class PlanesForSale::Scraper
 
 
       
-      def self.scrape_plane_index
-            doc = Nokogiri::HTML(open('https://www.controller.com/listings/aircraft/for-sale/list/category/13/aircraft/manufacturer/cessna/model-group/182'))
+     def self.scrape_plane_index
+            doc = Nokogiri::HTML(open("/home/andrew/code/labs/planes_for_sale/Controller.com _ CESSNA TURBO 182T SKYLANE For Sale - 125 Listings - Page 1..html"))
+            
             doc.css('.listings-list').each do |plane|
                   plane.css('.border-bottom').each do |airplane|
+                        #binding.pry
                   PlanesForSale::Plane.new_from_index(airplane)
+
               end
              end
 
