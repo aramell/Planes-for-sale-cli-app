@@ -4,40 +4,38 @@ class PlanesForSale::Plane
 
     @@all = []
 
-    def self.airplane
+#     def self.airplane
     
        
-        # return the instances of the planes
+#         # return the instances of the planes
         
-        new_plane = self.new
-        new_plane.name = "this is a plane"
-        new_plane.price = " $100"
-        new_plane.location = "new york"
-        new_plane.url = 'https://www.controller.com/listings/aircraft/for-sale/*' 
-        new_plane.total_time = "500 hrs"
-        @@all << new_plane
-   end
+#         new_plane = self.new
+#         new_plane.name = "this is a plane"
+#         new_plane.price = " $100"
+#         new_plane.location = "new york"
+#         new_plane.url = 'https://www.controller.com/listings/aircraft/for-sale/*' 
+#         new_plane.total_time = "500 hrs"
+#         @@all << new_plane
+#    end
 
-   def initialize(name = nil, url= nil, location = nil, dealer = nil)
+    def self.new_from_index(airplane)
+        
+        self.new(airplane.css('.listing-name').text, airplane.css('.dealer-info .bold').text, airplane.css('.call-it-listing a').text )
+        
+        
+    end
+
+
+   def initialize(name = nil, dealer = nil, phone = nil)
 
         @name = name
-        @url = url
-        @location = location
         @dealer = dealer
-
+        @phone = phone
+        @@all << self
     end
 
     def self.all
         @@all
-    end
+    end  
 
-    
-    def self.create_from_index
-    
-        PlanesForSale::Scraper.scrape_plane_page.each do |p|
-            self.new(p)
-            binding.pry
-        end
-        
-    end
 end

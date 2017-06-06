@@ -1,3 +1,4 @@
+
  require 'open-uri'
  require 'nokogiri'
 require 'pry'
@@ -13,44 +14,57 @@ class PlanesForSale::Scraper
 
 
       def self.get_page
-            Nokogiri::HTML(open("https://www.controller.com/listings/aircraft/for-sale/list/category/13/aircraft/manufacturer/cessna/model-group/182"))
-
+            Nokogiri::HTML(open(Planesforsale_url))
+            
       end
+
+
       
       def self.scrape_plane_index
-            self.get_page.css(".border-bottom")
-
-      end
-
-
-      def self.scrape_plane_page
-         doc = Nokogiri::HTML(open(Planesforsale_url))
-            doc.search('.listing-name')
-      
+            doc = Nokogiri::HTML(open('https://www.controller.com/listings/aircraft/for-sale/list/category/13/aircraft/manufacturer/cessna/model-group/182'))
             doc.css('.listings-list').each do |plane|
                   plane.css('.border-bottom').each do |airplane|
-                        plane_listing = self.new
-                        plane_listing.plane_title = airplane.css('.listing-name').text
-                       plane_listing.plane_desc = airplane.css('.equip-details .m-bottom-5').text
-                        plane_listing.dealer_info = airplane.css('.dealer-info .bold').text
-                        plane_listing.dealer_phone = airplane.css('.call-it-listing a').text
-                        @planes << plane_listing
-                        # total_time = airplane.css()
-                        # avionics = airplane.css('page.text.match('total')')          
-         
-                      
-                  end
-            end
-            @planes
+                  PlanesForSale::Plane.new_from_index(airplane)
+                  binding.pry
+              end
+             end
+
       end
 
-      # def create_planes
-      #       scrape_plane_index.each do |plane|
-      #             create_from_index(plane)
 
+      # def self.scrape
+      #    doc = Nokogiri::HTML(open(Planesforsale_url))
+      # #      doc.search('.listing-name')oc
+      
+      #       doc.css('.listings-list').each do |plane|
+                  
+      #             plane.css('.border-bottom').each do |airplane|
+                        
+      #                   # plane_listing = self.new
+
+      #                   # plane_listing.plane_title = airplane.css('.listing-name').text
+      #                   # plane_listing.plane_desc = airplane.css('.equip-details .m-bottom-5').text
+      #                   # plane_listing.dealer_info = airplane.css('.dealer-info .bold').text
+      #                   # plane_listing.dealer_phone = airplane.css('.call-it-listing a').text
+                        
+      #                   # @planes << plane_listing
+                        
+      #                   # total_time = airplane.css()
+      #                   # avionics = airplane.css('page.text.match('total')')          
+      #             end
       #       end
-
       # end
+      
+      
+
+      def create_planes
+            scrape_plane_index.each do |airplane|
+            
+            PlanesForSale::Plane.new_from_index(airplane)
+            binding.pry
+            end
+
+      end
 
       def self.plane_listings
 

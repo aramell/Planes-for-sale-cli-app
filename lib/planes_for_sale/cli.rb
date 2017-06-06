@@ -35,10 +35,10 @@ class PlanesForSale::CLI
                     puts @planes[input.to_i-1]
                 elsif  input == "list"
                     list_planes
-                elsif "exit"
-                        goodbye
-                elsif
-                     puts "not sure what you mean... type a plane number, list or exit"
+                # elsif "exit"
+                        # goodbye
+                # elsif
+                #      puts "not sure what you mean... type a plane number, list or exit"
                     
                  
 
