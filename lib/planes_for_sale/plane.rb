@@ -18,6 +18,8 @@ class PlanesForSale::Plane
 #         @@all << new_plane
 #    end
 
+    
+
     def self.new_from_index(airplane)
         
         self.new(airplane.css('.listing-name').text, airplane.css('.dealer-info .bold').text, airplane.css('.call-it-listing a').text )
@@ -31,6 +33,7 @@ class PlanesForSale::Plane
         @name = name
         @dealer = dealer
         @phone = phone
+        
         @@all << self
     end
 

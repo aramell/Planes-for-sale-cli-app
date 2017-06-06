@@ -25,7 +25,6 @@ class PlanesForSale::Scraper
             doc.css('.listings-list').each do |plane|
                   plane.css('.border-bottom').each do |airplane|
                   PlanesForSale::Plane.new_from_index(airplane)
-                  binding.pry
               end
              end
 

@@ -3,7 +3,7 @@ class PlanesForSale::CLI
     attr_accessor :total_time
 
     def call
-
+        PlanesForSale::Scraper.scrape_plane_index
         puts "today's planes"
         list_planes
         menu
@@ -14,9 +14,9 @@ class PlanesForSale::CLI
 
         puts "Here are the planes:"
             #list the planes showing
-        @planes = PlanesForSale::Plane.airplane 
         
-        @planes.each.with_index(1) do |plane, i|
+        
+        PlanesForSale::Plane.all.each.with_index(1) do |plane, i|
         puts "#{i}. #{plane.name} - #{plane.total_time}"
 
         
