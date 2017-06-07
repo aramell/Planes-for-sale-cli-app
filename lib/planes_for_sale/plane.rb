@@ -15,13 +15,7 @@ class PlanesForSale::Plane
         airplane.css('div.listing-name a').first.attr('href'), #URL
         )
         end
-    def url(airplane)
-         @doc = Nokogiri::HTML(open(@url))
-         binding.pry
-    end
-
-
-
+    
    def initialize(name = nil, dealer = nil, phone = nil, location = nil, price = nil, desc = nil, url = nil)
 
         @name = name
@@ -44,14 +38,6 @@ class PlanesForSale::Plane
     def self.airplane_selection(number)
         self.all[number-1]
     end
-
-   
-    def description
-        url.css('.listings-detail-wrapper #listing-bottom-information').text
-    end
-# description css tag   doc.css('.listings-detail-wrapper #listing-bottom-information').text
-
-#@url.css('.listings-detail-wrapper #listing-bottom-information').text
 
 
 end

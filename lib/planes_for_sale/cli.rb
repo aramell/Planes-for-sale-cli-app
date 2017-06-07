@@ -27,8 +27,6 @@ class PlanesForSale::CLI
 
     end       
     
-
-
     def menu
         input = nil
          while input != "exit"
@@ -53,8 +51,6 @@ class PlanesForSale::CLI
                  puts ""
                  puts "not sure what you mean... type a plane number, list or exit"
                  puts ""   
-                 
-
             end
         end
     end
@@ -78,8 +74,6 @@ class PlanesForSale::CLI
            
         puts "________________________"
     end
-
-
     
     def goodbye
         puts ""
