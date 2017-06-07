@@ -21,7 +21,7 @@ class PlanesForSale::Scraper
 
       
      def self.scrape_plane_index
-            doc = Nokogiri::HTML(open("/home/andrew/code/labs/planes_for_sale/Controller.com _ CESSNA TURBO 182T SKYLANE For Sale - 125 Listings - Page 1..html"))
+            doc = Nokogiri::HTML(open("/home/andrew/code/labs/planes_for_sale/Controller.com _ Piston Single Aircraft For Sale - 1611 Listings - Page 1..html"))
             
             doc.css('.listings-list').each do |plane|
                   plane.css('.border-bottom').each do |airplane|
@@ -45,29 +45,6 @@ class PlanesForSale::Scraper
                   end
             end
       end
-      
-      # def self.scrape
-      #    doc = Nokogiri::HTML(open(Planesforsale_url))
-      # #      doc.search('.listing-name')oc
-      
-      #       doc.css('.listings-list').each do |plane|
-                  
-      #             plane.css('.border-bottom').each do |airplane|
-                        
-      #                   # plane_listing = self.new
-
-      #                   # plane_listing.plane_title = airplane.css('.listing-name').text
-      #                   # plane_listing.plane_desc = airplane.css('.equip-details .m-bottom-5').text
-      #                   # plane_listing.dealer_info = airplane.css('.dealer-info .bold').text
-      #                   # plane_listing.dealer_phone = airplane.css('.call-it-listing a').text
-                        
-      #                   # @planes << plane_listing
-                        
-      #                   # total_time = airplane.css()
-      #                   # avionics = airplane.css('page.text.match('total')')          
-      #             end
-      #       end
-      # end
       
       
 

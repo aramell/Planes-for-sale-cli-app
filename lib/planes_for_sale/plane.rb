@@ -1,6 +1,6 @@
 
 class PlanesForSale::Plane
-    attr_accessor :name, :price, :phone, :location, :url, :total_time, :dealer, :planes, :desc, :doc
+    attr_accessor :name, :price, :avionics, :phone, :location, :url, :total_time, :dealer, :planes, :desc, :doc
 
     @@all = []
 
@@ -9,10 +9,13 @@ class PlanesForSale::Plane
         airplane.css('.dealer-info .bold').text.strip, 
         airplane.css('.call-it-listing a').text, #phone
         airplane.at('.dealer-info div[2]').text, #location
-        airplane.at('.listing-price-first').text.strip,
+        airplane.at('.listing-price-first').text.strip.delete("\n"),
         airplane.css('.equip-details .m-bottom-5').text.strip,
-        airplane.css('div.listing-name a').first.attr('href')) #URL
-        
+        airplane.css('div.listing-name a').first.attr('href'), #URL
+        airplane.at('.fluid-mobile //div[2]').text, #number of seats
+        airplane.at('.fluid-mobile').text.strip.delete("\n"),
+        airplane.at('.fluid-mobile //div[4]').text.strip.delete("\n") #avionics
+        )
     end
 
     def url(airplane)
@@ -22,7 +25,7 @@ class PlanesForSale::Plane
 
 
 
-   def initialize(name = nil, dealer = nil, phone = nil, location = nil, price = nil, desc = nil, url = nil)
+   def initialize(name = nil, dealer = nil, phone = nil, location = nil, price = nil, desc = nil, url = nil, seats = nil, total_time = nil, avionics =nil)
 
         @name = name
         @dealer = dealer
@@ -31,6 +34,8 @@ class PlanesForSale::Plane
         @desc = desc
         @url = url
         @phone = phone
+        @avionics = avionics
+        @total_time = total_time
 
         @@all << self
         end

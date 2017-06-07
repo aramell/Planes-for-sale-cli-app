@@ -3,7 +3,7 @@ class PlanesForSale::CLI
     attr_accessor :total_time
 
     def call
-        PlanesForSale::Scraper.scrape_plane_index
+      PlanesForSale::Scraper.scrape_plane_index
         puts "today's planes"
         list_planes
         menu
@@ -17,7 +17,7 @@ class PlanesForSale::CLI
         
         
         PlanesForSale::Plane.all[0..9].each.with_index(1) do |plane, i|
-        puts "#{i}. #{plane.name} - #{plane.total_time}"
+        puts "#{i}. #{plane.name}"
         
 
 
@@ -27,7 +27,7 @@ class PlanesForSale::CLI
 
     def additional_planes
         PlanesForSale::Plane.all[10..19].each.with_index(11) do |plane, i|
-        puts "#{i}. #{plane.name} - #{plane.total_time}"
+        puts "#{i}. #{plane.name}"
 
         end
 
@@ -56,7 +56,7 @@ class PlanesForSale::CLI
                    more_detail(airplane)
 
                  else
-                     puts ""
+                 puts ""
                  puts "not sure what you mean... type a plane number, list or exit"
                  puts ""   
                  
@@ -71,30 +71,22 @@ class PlanesForSale::CLI
         puts "________________________"
         PlanesForSale::Plane.all
             puts "Aircraft year/type: #{airplane.name}"
+            #puts "#{airplane.seats}"
+            puts "#{airplane.avionics}"
             puts ""
             puts "Location:" + "#{airplane.location}"
             puts "Seller: #{airplane.dealer}"
+            puts "Phone: #{airplane.phone}"
             puts ""
+
             puts "#{airplane.price}"
         puts ""
-            puts "#{airplane.phone}"
+           
         puts "________________________"
     end
 
-    def more_detail(airplane)
-            puts "Aircraft year/type: #{airplane.name}"
-            puts ""
-            puts "Location:" + "#{airplane.location}"
-            puts "Seller: #{airplane.dealer}"
-            puts "Phone: #{airplane.price}"
-            puts " "
-            
-            puts "#{Plane.description}"
-            binding.pry.
-            puts "#{airplane.url}"
 
-
-    end
+    
     def goodbye
         puts ""
         puts "goodbye!"
