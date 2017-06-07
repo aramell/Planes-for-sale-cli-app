@@ -39,7 +39,7 @@ class PlanesForSale::CLI
                 if input.to_i >0
                  display_plane(airplane)
                  puts ""
-                 puts "Enter more if you would like more details on this plane; otherwise input list to see more planes or exit to leave program"
+                 puts "Input list to see more planes or exit to leave program"
                      
                 elsif  input == "list"
                   list_planes
@@ -65,7 +65,8 @@ class PlanesForSale::CLI
         puts "________________________"
         PlanesForSale::Plane.all
             puts "Aircraft year/type: #{airplane.name}"
-            
+            puts ""
+            puts "#{airplane.desc}"
             puts ""
             puts "Location:" + "#{airplane.location}"
             puts "Seller: #{airplane.dealer}"
@@ -82,7 +83,7 @@ class PlanesForSale::CLI
     
     def goodbye
         puts ""
-        puts "goodbye!"
+        puts "Goodbye!"
         puts ""
         puts ""
 
