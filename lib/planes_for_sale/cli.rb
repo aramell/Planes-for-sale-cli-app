@@ -1,7 +1,5 @@
 class PlanesForSale::CLI
 
-    attr_accessor :total_time
-
     def call
         puts "Welcome to the Planes For Sale CLI program"
         puts ""
