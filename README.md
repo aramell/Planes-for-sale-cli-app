@@ -1,8 +1,9 @@
 # PlanesForSale
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/planes_for_sale`. To experiment with that code, run `bin/console` for an interactive prompt.
+The PlanesForSale gem pulls information from the Controller.com website.  Controller.com is a well known marketplace for used airplanes.  This CLI gem will pull information on single engine planes available on the Controller.com website.  When you start the program, you will be shown the first list of 10 planes.  You can choose the corresponding plane number to learn more about that plane or type next and see another 10 planes. Type list at any point and you will go back to the list of planes.
 
-TODO: Delete this and the text above, and describe your gem
+Thank you for checking it out.
+
 
 ## Installation
 
@@ -22,7 +23,7 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+
 
 ## Development
 
