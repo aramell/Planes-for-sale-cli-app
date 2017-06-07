@@ -27,7 +27,6 @@ class PlanesForSale::Scraper
                   plane.css('.border-bottom').each do |airplane|
                   
                   PlanesForSale::Plane.new_from_index(airplane)
-
               end
              end
 
@@ -46,11 +45,6 @@ class PlanesForSale::Scraper
             end
       end
 
-    def self.scrape_profile_page(airplane)
-          self.scrape_url.css('div.listing-name a').first.attr('href')
-         doc = Nokogiri::HTML(open(plane_page))
-         binding.pry
-
-    end
+  
 
 end

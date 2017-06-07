@@ -12,15 +12,8 @@ class PlanesForSale::Plane
         airplane.at('.dealer-info div[2]').text, #location
         airplane.at('.listing-price-first').text.strip.delete("\n"),
         airplane.css('.equip-details .m-bottom-5').text.strip,
-        @url =  airplane.css('div.listing-name a').first.attr('href'), #URL
-        airplane.at('.fluid-mobile //div[2]').text, #number of seats
-        airplane.at('.fluid-mobile').text.strip.delete("\n"),
-        airplane.at('.fluid-mobile //div[4]').text.strip.delete("\n"),#avionics
-         url.at('.m-bottom-5:contains("Airframe")').text.strip.delete("\r\n")
+        airplane.css('div.listing-name a').first.attr('href'), #URL
         )
-        #doc.at('.m-bottom-5:contains("Airframe")').text.strip.delete("\r\n")
-        binding.pry
-        @@all << self
         end
     def url(airplane)
          @doc = Nokogiri::HTML(open(@url))
@@ -29,7 +22,7 @@ class PlanesForSale::Plane
 
 
 
-   def initialize(name = nil, dealer = nil, phone = nil, location = nil, price = nil, desc = nil, url = nil, seats = nil, total_time = nil, airframe =nil)
+   def initialize(name = nil, dealer = nil, phone = nil, location = nil, price = nil, desc = nil, url = nil)
 
         @name = name
         @dealer = dealer

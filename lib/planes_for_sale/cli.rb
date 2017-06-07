@@ -4,7 +4,7 @@ class PlanesForSale::CLI
 
     def call
       PlanesForSale::Scraper.scrape_plane_index
-        puts "today's planes"
+        
         list_planes
         menu
         goodbye
@@ -66,8 +66,7 @@ class PlanesForSale::CLI
         puts "________________________"
         PlanesForSale::Plane.all
             puts "Aircraft year/type: #{airplane.name}"
-            #puts "#{airplane.seats}"
-            puts "#{airplane.avionics}"
+            
             puts ""
             puts "Location:" + "#{airplane.location}"
             puts "Seller: #{airplane.dealer}"
