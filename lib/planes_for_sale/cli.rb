@@ -3,20 +3,19 @@ class PlanesForSale::CLI
     attr_accessor :total_time
 
     def call
-      PlanesForSale::Scraper.scrape_plane_index
-        
+        puts "Welcome to the Planes For Sale CLI program"
+        puts ""
+      PlanesForSale::Scraper.scrape_plane_index        
         list_planes
         menu
         goodbye
     end
 
     def list_planes
-
-            #list the planes showing
-           
+        puts "_____________________" 
         PlanesForSale::Plane.all[0..9].each.with_index(1) do |plane, i|
         puts "#{i}. #{plane.name}"
-               
+        
         end
     end
 
@@ -33,7 +32,7 @@ class PlanesForSale::CLI
     def menu
         input = nil
          while input != "exit"
-          puts "Enter the number for the plane you would like more info on or type list to see planes or type exit:"
+          puts "Please choose a number from the selection, type next to see more planes or type exit to leave"
              input = gets.strip.downcase
            
             airplane = PlanesForSale::Plane.airplane_selection(input.to_i)

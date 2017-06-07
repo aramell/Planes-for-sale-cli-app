@@ -1,4 +1,0 @@
-class Planesearch
-
-
-end
