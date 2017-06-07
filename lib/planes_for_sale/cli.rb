@@ -2,6 +2,7 @@ class PlanesForSale::CLI
 
     def call
         puts "Welcome to the Planes For Sale CLI program"
+        puts "This program will show single engine planes on Controller.com"
         puts ""
       PlanesForSale::Scraper.scrape_plane_index        
         list_planes
@@ -18,7 +19,7 @@ class PlanesForSale::CLI
     end
 
     def additional_planes
-        PlanesForSale::Plane.all[10..19].each.with_index(11) do |plane, i|
+        PlanesForSale::Plane.all[10..24].each.with_index(11) do |plane, i|
         puts "#{i}. #{plane.name}"
 
         end
@@ -37,6 +38,9 @@ class PlanesForSale::CLI
                  puts ""
                  puts "Input list to see more planes or exit to leave program"
                      
+                elsif input.to_i > 26
+                    puts "please choose a number between 1-25"
+                    list_planes
                 elsif  input == "list"
                   list_planes
                 elsif input == "next"
