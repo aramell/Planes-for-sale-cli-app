@@ -12,16 +12,11 @@ class PlanesForSale::CLI
 
     def list_planes
 
-        puts "Here are the planes:"
             #list the planes showing
-        
-        
+           
         PlanesForSale::Plane.all[0..9].each.with_index(1) do |plane, i|
         puts "#{i}. #{plane.name}"
-        
-
-
-        
+               
         end
     end
 

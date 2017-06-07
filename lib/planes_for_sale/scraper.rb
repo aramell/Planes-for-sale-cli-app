@@ -34,7 +34,7 @@ class PlanesForSale::Scraper
       end
 
       def scrape_url
-             doc = Nokogiri::HTML(open("/home/andrew/code/labs/planes_for_sale/Controller.com _ CESSNA TURBO 182T SKYLANE For Sale - 125 Listings - Page 1..html"))
+             doc = Nokogiri::HTML(open("/home/andrew/code/labs/planes_for_sale/Controller.com _ Piston Single Aircraft For Sale - 1611 Listings - Page 1..html"))
             
             doc.css('.listings-list').each do |plane|
                   plane.css('.border-bottom').each do |airplane|
