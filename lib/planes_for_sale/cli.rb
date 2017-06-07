@@ -16,12 +16,22 @@ class PlanesForSale::CLI
             #list the planes showing
         
         
-        PlanesForSale::Plane.all.each.with_index(1) do |plane, i|
+        PlanesForSale::Plane.all[0..9].each.with_index(1) do |plane, i|
         puts "#{i}. #{plane.name} - #{plane.total_time}"
+        
+
 
         
         end
     end
+
+    def additional_planes
+        PlanesForSale::Plane.all[10..19].each.with_index(11) do |plane, i|
+        puts "#{i}. #{plane.name} - #{plane.total_time}"
+
+        end
+
+    end       
     
 
 
@@ -39,13 +49,16 @@ class PlanesForSale::CLI
                      
                 elsif  input == "list"
                   list_planes
+                elsif input == "next"
+                    additional_planes
                
                elsif input == "more"
                    more_detail(airplane)
 
-                 elsif
+                 else
+                     puts ""
                  puts "not sure what you mean... type a plane number, list or exit"
-                    
+                 puts ""   
                  
 
             end
@@ -64,6 +77,7 @@ class PlanesForSale::CLI
             puts ""
             puts "#{airplane.price}"
         puts ""
+            puts "#{airplane.phone}"
         puts "________________________"
     end
 
@@ -72,10 +86,11 @@ class PlanesForSale::CLI
             puts ""
             puts "Location:" + "#{airplane.location}"
             puts "Seller: #{airplane.dealer}"
-            puts ""
-            puts "#{airplane.price}"
+            puts "Phone: #{airplane.price}"
             puts " "
-            puts "#{airplane.description}"
+            
+            puts "#{Plane.description}"
+            binding.pry.
             puts "#{airplane.url}"
 
 

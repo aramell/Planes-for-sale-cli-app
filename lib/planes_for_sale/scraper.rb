@@ -13,7 +13,7 @@ class PlanesForSale::Scraper
       @planes = []
 
 
-      def self.get_page
+      def get_page
             Nokogiri::HTML(open(Planesforsale_url))
             
       end
@@ -33,12 +33,14 @@ class PlanesForSale::Scraper
 
       end
 
-      def self.scrape_url
+      def scrape_url
              doc = Nokogiri::HTML(open("/home/andrew/code/labs/planes_for_sale/Controller.com _ CESSNA TURBO 182T SKYLANE For Sale - 125 Listings - Page 1..html"))
             
             doc.css('.listings-list').each do |plane|
                   plane.css('.border-bottom').each do |airplane|
-            PlanesForSale::Plane.url(airplane)
+                  Plane.url(airplane)
+                  binding.pry
+            
 
                   end
             end
@@ -69,19 +71,16 @@ class PlanesForSale::Scraper
       
       
 
-      def create_planes
-            scrape_plane_index.each do |airplane|
+      # def create_planes
+      #       scrape_plane_index.each do |airplane|
             
-            PlanesForSale::Plane.new_from_index(airplane)
-            binding.pry
-            end
+      #       PlanesForSale::Plane.new_from_index(airplane)
+      #       @airplane = airplane
+      #       end
 
-      end
-
-      def self.plane_listings
+      # end
 
 
-      end
 
 
       # def self.dealer_scrape
@@ -89,10 +88,10 @@ class PlanesForSale::Scraper
       #       binding.pry
 
       # end
-    def self.scrape_profile_page(plane_url)
-          
-          html = open(profile_url)
-          profile_pages = Nokogiri::HTML(html)
+    def self.scrape_profile_page(airplane)
+          self.scrape_url.css('div.listing-name a').first.attr('href')
+         doc = Nokogiri::HTML(open(plane_page))
+         binding.pry
 
     end
 
