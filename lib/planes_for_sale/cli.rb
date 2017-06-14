@@ -4,7 +4,8 @@ class PlanesForSale::CLI
         puts "Welcome to the Planes For Sale CLI program"
         puts "This program will show single engine planes on Controller.com"
         puts ""
-      PlanesForSale::Scraper.scrape_plane_index        
+      PlanesForSale::Scraper.scrape_plane_index   
+      binding.pry     
         list_planes
         menu
         goodbye
@@ -31,9 +32,8 @@ class PlanesForSale::CLI
          while input != "exit"
           puts "Please choose a number from the selection, type next to see more planes or type exit to leave"
              input = gets.strip.downcase
-           
-            airplane = PlanesForSale::Plane.airplane_selection(input.to_i)
-                if input.to_i >0
+                if input.to_i.between?(1,PlanesForSale::Plane.all.size)
+                 airplane = PlanesForSale::Plane.airplane_selection(input.to_i)
                  display_plane(airplane)
                  puts ""
                  puts "Input list to see more planes or exit to leave program"

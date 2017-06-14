@@ -1,9 +1,11 @@
 #!/usr/bin/env ruby
 
-require './lib/planes_for_sale'
+require_relative '../lib/planes_for_sale'
 
 require "bundler/setup"
-require "planes_for_sale"
+#require "planes_for_sale"
 
 PlanesForSale::CLI.new.call
+
+
 
