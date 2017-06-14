@@ -34,6 +34,7 @@ class PlanesForSale::CLI
            
             airplane = PlanesForSale::Plane.airplane_selection(input.to_i)
                 if input.to_i < PlanesForSale::Plane.all.size
+                    display_plane(airplane)
                  puts ""
                  puts "Input list to see more planes or exit to leave program"
                      
