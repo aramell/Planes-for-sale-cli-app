@@ -33,7 +33,7 @@ class PlanesForSale::CLI
              input = gets.strip.downcase
            
             airplane = PlanesForSale::Plane.airplane_selection(input.to_i)
-                if input.to_i >0 <= PlanesForSale::Plane.size
+                if input.to_i < PlanesForSale::Plane.all.size
                  puts ""
                  puts "Input list to see more planes or exit to leave program"
                      
