@@ -33,14 +33,11 @@ class PlanesForSale::CLI
              input = gets.strip.downcase
            
             airplane = PlanesForSale::Plane.airplane_selection(input.to_i)
-                if input.to_i >0
-                 display_plane(airplane)
+                if input.to_i >0 <= PlanesForSale::Plane.size
                  puts ""
                  puts "Input list to see more planes or exit to leave program"
                      
-                elsif input.to_i > 26
-                    puts "please choose a number between 1-25"
-                    list_planes
+                
                 elsif  input == "list"
                   list_planes
                 elsif input == "next"
